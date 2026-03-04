@@ -2,80 +2,138 @@
   --bg:#0f172a;
   --card:rgba(255,255,255,0.08);
   --text:#f1f5f9;
+  --accent:#38bdf8;
 }
 
 body.light{
   --bg:#f1f5f9;
-  --card:rgba(255,255,255,0.7);
+  --card:rgba(255,255,255,0.75);
   --text:#0f172a;
+  -- संक्रम:rgba(0,0,0,0.05);
+}
+
+*{
+  box-sizing:border-box;
 }
 
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:var(--bg);
+  background:linear-gradient(135deg,#0f172a,#1e293b);
   color:var(--text);
+
+  min-height:100vh;
   display:flex;
-  justify-content:center;
+  flex-direction:column;
+  align-items:center;
+
   transition:0.3s;
 }
 
-.container{
+/* Wrapper agar tetap selebar HP di laptop */
+.app-wrapper{
   width:100%;
   max-width:420px;
-  padding:15px;
+  padding:20px 15px;
   text-align:center;
+  flex:1;
 }
 
+/* Topbar */
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  margin-bottom:20px;
+}
+
+h1{
+  font-size:22px;
+  margin:0;
+  font-weight:600;
 }
 
 #themeToggle{
   padding:6px 10px;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
+  background:var(--accent);
+  color:#fff;
   cursor:pointer;
 }
 
+/* Card style */
 .card{
   background:var(--card);
-  backdrop-filter:blur(10px);
-  padding:15px;
-  margin-bottom:12px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(12px);
+  padding:18px;
+  margin-bottom:14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
 }
 
-#map{
-  height:300px;
-  border-radius:12px;
+.card h3{
+  margin:0 0 10px 0;
+  font-size:14px;
+  color:var(--accent);
+  font-weight:600;
 }
 
-.btn-group{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-}
-
-button{
-  padding:8px 14px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  background:#38bdf8;
-  color:#fff;
+.card p{
+  margin:0;
+  font-size:15px;
+  line-height:1.6;
 }
 
 pre{
   white-space:pre-wrap;
   text-align:left;
   font-size:13px;
+  margin-bottom:12px;
 }
 
+/* Buttons */
+.btn-group{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+
+button{
+  padding:8px 14px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  font-weight:500;
+  transition:0.2s;
+}
+
+button:hover{
+  opacity:0.85;
+}
+
+/* Map */
+#map{
+  height:300px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+/* Footer */
 footer{
+  width:100%;
+  max-width:420px;
   text-align:center;
   padding:15px;
+  margin-top:auto;
+  font-size:14px;
+}
+
+footer a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
 }
