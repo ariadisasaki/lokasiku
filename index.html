@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyLoc App</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#0f172a">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script defer src="js/app.js"></script>
+  <script defer src="js/map.js"></script>
+  <script defer src="js/location.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <h1>📍 MyLoc App</h1>
+    <button id="themeToggle">🌙</button>
+  </div>
+
+  <div class="card">
+    <h3>Hari, Tanggal, dan Waktu :</h3>
+    <p id="datetime"></p>
+  </div>
+
+  <div class="card">
+    <h3>Koordinat dan Elevasi :</h3>
+    <p id="coords"></p>
+  </div>
+
+  <div class="card">
+    <h3>📍 Lokasi saya saat ini :</h3>
+    <pre id="shareText"></pre>
+    <div class="btn-group">
+      <button id="shareBtn">Share</button>
+      <button id="copyBtn">Copy</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div id="map"></div>
+  </div>
+
+  <div class="card">
+    <h3>Lokasi :</h3>
+    <p id="address"></p>
+  </div>
+
+  <div class="card">
+    <h3>Deskripsi Wilayah :</h3>
+    <p id="description"></p>
+  </div>
+
+</div>
+
+<footer>
+  Developed by 
+  <a href="https://www.facebook.com/share/1C8bjd7Xoh" target="_blank">
+    Ariadi Forester
+  </a>
+</footer>
+
+</body>
+</html>
