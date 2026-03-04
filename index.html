@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <meta name="theme-color" content="#0f172a">
 
+  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
@@ -16,9 +17,10 @@
   <script defer src="js/map.js"></script>
   <script defer src="js/location.js"></script>
 </head>
+
 <body>
 
-<div class="container">
+<main class="app-wrapper">
 
   <div class="topbar">
     <h1>📍 MyLoc App</h1>
@@ -38,6 +40,7 @@
   <div class="card">
     <h3>📍 Lokasi saya saat ini :</h3>
     <pre id="shareText"></pre>
+
     <div class="btn-group">
       <button id="shareBtn">Share</button>
       <button id="copyBtn">Copy</button>
@@ -58,7 +61,7 @@
     <p id="description"></p>
   </div>
 
-</div>
+</main>
 
 <footer>
   Developed by 
