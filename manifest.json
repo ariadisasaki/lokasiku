@@ -2,9 +2,11 @@
   "name": "MyLoc App",
   "short_name": "MyLoc",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icons/icon-192.png",
