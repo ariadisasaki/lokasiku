@@ -28,7 +28,7 @@ document.getElementById("description").innerText=
 const gmaps=`https://www.google.com/maps?q=${lat},${lon}`;
 
 const shareFormat=
-`
+`📍Lokasi saya saat ini :
 ${address}
 
 Koordinat :
