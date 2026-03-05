@@ -1,13 +1,25 @@
 // Clock
 function updateClock(){
-  const now=new Date();
-  const hari=now.toLocaleDateString('id-ID',{weekday:'long'});
-  const tanggal=now.toLocaleDateString('id-ID');
-  const waktu=now.toLocaleTimeString('id-ID');
-  document.getElementById("datetime").innerText=
-  `${hari}, ${tanggal} - Pkl. ${waktu}`;
+  const now = new Date();
+
+  const hari = now.toLocaleDateString('id-ID', { weekday: 'long' });
+  const tanggal = now.toLocaleDateString('id-ID', { 
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+  const waktu = now.toLocaleTimeString('id-ID', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+
+  document.getElementById("datetime").innerText =
+    `${hari}, ${tanggal} - Pkl. ${waktu}`;
 }
-setInterval(updateClock,1000);
+
+setInterval(updateClock, 1000);
 updateClock();
 
 // Theme toggle
