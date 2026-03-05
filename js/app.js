@@ -48,3 +48,34 @@ document.getElementById("copyBtn").onclick=()=>{
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js');
 }
+
+let deferredPrompt;
+
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+
+  e.preventDefault();
+
+  deferredPrompt = e;
+
+  installBtn.hidden = false;
+
+});
+
+installBtn.addEventListener("click", async () => {
+
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+
+  const { outcome } = await deferredPrompt.userChoice;
+
+  if (outcome === "accepted") {
+    console.log("PWA berhasil diinstall");
+  }
+
+  deferredPrompt = null;
+  installBtn.hidden = true;
+
+});
