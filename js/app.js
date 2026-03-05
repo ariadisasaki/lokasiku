@@ -50,32 +50,44 @@ if('serviceWorker' in navigator){
 }
 
 let deferredPrompt;
-
 const installBtn = document.getElementById("installBtn");
 
-window.addEventListener("beforeinstallprompt", (e) => {
+// jika app sudah dijalankan sebagai PWA
+if (window.matchMedia('(display-mode: standalone)').matches) {
+
+  installBtn.textContent = "✅ App Installed";
+  installBtn.classList.add("installed");
+  installBtn.disabled = true;
+
+}
+
+// event install tersedia
+window.addEventListener("beforeinstallprompt", (e)=>{
 
   e.preventDefault();
-
   deferredPrompt = e;
 
-  installBtn.hidden = false;
+  installBtn.style.display = "inline-block";
 
 });
 
-installBtn.addEventListener("click", async () => {
+// klik tombol install
+installBtn.addEventListener("click", async ()=>{
 
-  if (!deferredPrompt) return;
+  if(!deferredPrompt) return;
 
   deferredPrompt.prompt();
 
   const { outcome } = await deferredPrompt.userChoice;
 
-  if (outcome === "accepted") {
-    console.log("PWA berhasil diinstall");
+  if(outcome === "accepted"){
+
+    installBtn.textContent = "✅ App Installed";
+    installBtn.classList.add("installed");
+    installBtn.disabled = true;
+
   }
 
   deferredPrompt = null;
-  installBtn.hidden = true;
 
 });
