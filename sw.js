@@ -1,16 +1,24 @@
-const CACHE="myloc-v2";
+const CACHE_NAME = "myloc-cache-v1";
 
-self.addEventListener("install",e=>{
-  e.waitUntil(
-    caches.open(CACHE).then(cache=>{
-      return cache.addAll([
-        "/",
-        "/index.html",
-        "/css/style.css",
-        "/js/app.js",
-        "/js/map.js",
-        "/js/location.js"
-      ]);
-    })
+const urlsToCache = [
+  "/",
+  "/index.html",
+  "/style.css",
+  "/app.js",
+  "/location.js",
+  "/manifest.json"
+];
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
   );
 });
