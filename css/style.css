@@ -137,3 +137,19 @@ footer a{
   text-decoration:none;
   font-weight:600;
 }
+
+.install-btn{
+  margin-top:15px;
+  padding:10px 18px;
+  font-size:14px;
+  border:none;
+  border-radius:8px;
+  background:#1e88e5;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.install-btn:hover{
+  background:#1565c0;
+}
