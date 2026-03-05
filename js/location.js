@@ -6,7 +6,7 @@ navigator.geolocation.getCurrentPosition(async pos => {
   try {
 
     // ==============================
-    // ELEVASI REAL (Open-Elevation)
+    // ELEVASI REAL
     // ==============================
     const elevRes = await fetch(
       `https://api.open-elevation.com/api/v1/lookup?locations=${lat},${lon}`
@@ -19,17 +19,13 @@ navigator.geolocation.getCurrentPosition(async pos => {
 
 
     // ==============================
-    // REVERSE GEOCODING (Nominatim)
+    // REVERSE GEOCODING
     // ==============================
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
     );
     const data = await res.json();
     const addr = data.address || {};
-
-    document.getElementById("address").innerText =
-      data.display_name || "";
-
 
     // ==============================
     // KONVERSI COUNTRY CODE → BENDERA
@@ -45,45 +41,19 @@ navigator.geolocation.getCurrentPosition(async pos => {
 
     const flag = countryToFlag(addr.country_code);
 
-
     // ==============================
-    // FORMAT ADMINISTRATIF LENGKAP
+    // FORMAT ALAMAT + BENDERA
     // ==============================
-    const wilayahParts = [];
+    let addressText = data.display_name || "";
 
-    // Desa / Kelurahan
-    if (addr.village) {
-      wilayahParts.push(`Desa ${addr.village}`);
-    } else if (addr.suburb) {
-      wilayahParts.push(`Kelurahan ${addr.suburb}`);
+    if (addr.country && flag) {
+      addressText = addressText.replace(
+        addr.country,
+        `${addr.country} ${flag}`
+      );
     }
 
-    // Kecamatan
-    if (addr.city_district) {
-      wilayahParts.push(`Kecamatan ${addr.city_district}`);
-    }
-
-    // Kabupaten
-    if (addr.county) {
-      wilayahParts.push(`Kabupaten ${addr.county}`);
-    }
-
-    // Provinsi
-    if (addr.state) {
-      wilayahParts.push(`Provinsi ${addr.state}`);
-    }
-
-    // Negara + Bendera
-    if (addr.country) {
-      wilayahParts.push(`${addr.country}${flag ? " " + flag : ""}`);
-    }
-
-    const wilayahText = wilayahParts.join(", ");
-
-    document.getElementById("description").innerText =
-      wilayahText
-        ? `Wilayah ini termasuk ${wilayahText}`
-        : "";
+    document.getElementById("address").innerText = addressText;
 
 
     // ==============================
@@ -94,7 +64,7 @@ navigator.geolocation.getCurrentPosition(async pos => {
     const shareFormat =
 `📍 Lokasi saya saat ini :
 
-${data.display_name || "-"}
+${addressText}
 
 Koordinat :
 ${lat.toFixed(6)}, ${lon.toFixed(6)}
