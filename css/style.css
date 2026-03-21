@@ -118,7 +118,7 @@ button:hover{
   margin-bottom:14px;
 }
 
-/* Footer
+/* Footer */
 footer{
   width:100%;
   max-width:420px;
@@ -128,10 +128,16 @@ footer{
   font-size:14px;
 }
 
+/* Link footer (TIDAK BIRU) */
 footer a{
-  color:var(--accent);
+  color:var(--text); /* 🔥 bukan biru lagi */
   text-decoration:none;
   font-weight:600;
+}
+
+/* Optional hover biar keren */
+footer a:hover{
+  color:var(--accent);
 }
 
 /* Install Button */
