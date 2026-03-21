@@ -21,12 +21,7 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#0f172a,#1e293b);
   color:var(--text);
-
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
+  display:block;
   transition:0.3s;
 }
 
@@ -36,6 +31,7 @@ body{
   max-width:420px;
   padding:20px 15px;
   text-align:center;
+  margin:0 auto; /* 🔥 center */
 }
 
 /* Topbar */
@@ -61,7 +57,7 @@ h1{
   cursor:pointer;
 }
 
-/* Card style */
+/* Card */
 .card{
   background:var(--card);
   backdrop-filter:blur(12px);
@@ -122,13 +118,13 @@ button:hover{
   margin-bottom:14px;
 }
 
-/* Footer */
+/* Footer
 footer{
   width:100%;
   max-width:420px;
   text-align:center;
-  padding:15px;
-  margin-top:10px; /* 🔥 ini yang bikin rapat */
+  padding:10px 15px;
+  margin:0 auto 10px auto;
   font-size:14px;
 }
 
