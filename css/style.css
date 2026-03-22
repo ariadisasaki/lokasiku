@@ -128,9 +128,9 @@ footer{
   font-size:14px;
 }
 
-/* Link footer (TIDAK BIRU) */
+/* Link footer */
 footer a{
-  color:var(--text); /* 🔥 bukan biru lagi */
+  color:#00c6ff;
   text-decoration:none;
   font-weight:600;
 }
